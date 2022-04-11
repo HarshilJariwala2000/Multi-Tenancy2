@@ -1,24 +1,23 @@
 import { Controller, Get, Post } from '@nestjs/common';
 import { TenantConnection } from 'src/Tenants/tenant.connection';
 import { ClientService } from './client.service';
-//import { AppService } from './app.service';
 
 @Controller()
 export class ClientController{
-    constructor(private readonly clientService: TenantConnection) {}
+    constructor(private readonly tenantConnection: TenantConnection) {}
 
     @Get('find')
     getHello() {
-    return this.clientService.findAll();
+    return this.tenantConnection.findAll();
     }
 
     @Post('update')
     updatemany(){
-        return this.clientService.updatemany();
+        return this.tenantConnection.updatemany();
     }
 
     @Post('insert')
     insertmany(){
-        return this.clientService.insertmany();
+        return this.tenantConnection.insertmany();
     }
 }
